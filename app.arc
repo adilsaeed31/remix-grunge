@@ -1,5 +1,5 @@
 @app
-grunge-stack-template
+remix-app-27b6
 
 @aws
 runtime nodejs18.x
