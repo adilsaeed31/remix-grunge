@@ -29,7 +29,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
   const note = await createNote({ body, title, userId });
 
-  return redirect(`/notes/${note.id}`);
+  return redirect(`/users/${note.id}`);
 };
 
 export default function NewNotePage() {
@@ -57,7 +57,7 @@ export default function NewNotePage() {
     >
       <div>
         <label className="flex w-full flex-col gap-1">
-          <span>Title: </span>
+          <span>Name: </span>
           <input
             ref={titleRef}
             name="title"
@@ -77,7 +77,7 @@ export default function NewNotePage() {
 
       <div>
         <label className="flex w-full flex-col gap-1">
-          <span>Body: </span>
+          <span>Desc: </span>
           <textarea
             ref={bodyRef}
             name="body"

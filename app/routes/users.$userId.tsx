@@ -13,9 +13,9 @@ import { requireUserId } from "~/session.server";
 
 export const loader = async ({ params, request }: LoaderFunctionArgs) => {
   const userId = await requireUserId(request);
-  invariant(params.noteId, "noteId not found");
+  invariant(params.userId, "userId not found");
 
-  const note = await getNote({ id: params.noteId, userId });
+  const note = await getNote({ id: params.userId, userId });
   if (!note) {
     throw new Response("Not Found", { status: 404 });
   }
@@ -24,11 +24,11 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
 
 export const action = async ({ params, request }: ActionFunctionArgs) => {
   const userId = await requireUserId(request);
-  invariant(params.noteId, "noteId not found");
+  invariant(params.userId, "userId not found");
 
-  await deleteNote({ id: params.noteId, userId });
+  await deleteNote({ id: params.userId, userId });
 
-  return redirect("/notes");
+  return redirect("/users");
 };
 
 export default function NoteDetailsPage() {
